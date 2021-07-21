@@ -46,5 +46,6 @@ const displayTodos = (todos) => {
   const ul = document.querySelector('ul');
   ul.appendChild(today());
   ul.appendChild(addTodo());
-
 };
+
+export default displayTodos;
