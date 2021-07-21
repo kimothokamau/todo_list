@@ -30,8 +30,6 @@ const displayTodos = (todos) => {
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    checkbox.name = 'completed';
-    checkbox.classList.add('completed');
     checkbox.classList.add('checkbox');
 
     const todoDesc = document.createElement('span');
@@ -46,6 +44,9 @@ const displayTodos = (todos) => {
   const ul = document.querySelector('ul');
   ul.appendChild(today());
   ul.appendChild(addTodo());
+
+  todos.sort((a, b) => ((a.index > b.index) ? 1 : -1));
+  todos.forEach((todo) => ul.appendChild(todoItem(todo)));
 };
 
 export default displayTodos;
