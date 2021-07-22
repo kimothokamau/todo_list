@@ -33,14 +33,13 @@ const displayTodos = (todos) => {
     addIcon.classList.add('icons');
     newTodoCont.appendChild(addIcon);
 
-
     return newTodoCont;
   };
 
   const todoItem = (todo) => {
     const todoLi = document.createElement('li');
     todoLi.setAttribute('todo', todo.index);
-    todoLi.classList.add('todoli')
+    todoLi.classList.add('todoli');
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -57,12 +56,8 @@ const displayTodos = (todos) => {
     delIcon.classList.add('fas', 'fa-trash-alt');
     delIcon.classList.add('icons');
     delIcon.setAttribute('id', 'trash-icon');
-    delIcon.addEventListener('click', () => {
-      ul.removeChild(li);
 
-    });
-
-  todoLi.appendChild(delIcon);
+    todoLi.appendChild(delIcon);
     return todoLi;
   };
 
