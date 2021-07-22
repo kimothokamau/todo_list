@@ -8,12 +8,18 @@ const displayTodos = (todos) => {
 
     todayCont.appendChild(todayDesc);
 
+    const sync = document.createElement('i');
+    sync.classList.add('fas', 'fa-sync-alt');
+    sync.classList.add('icons');
+    todayCont.appendChild(sync);
+
     return todayCont;
   };
 
   const addTodo = () => {
     const newTodoCont = document.createElement('li');
     newTodoCont.id = 'newTodoCont';
+    newTodoCont.setAttribute('id', 'newtodo');
 
     const todoText = document.createElement('input');
     todoText.type = 'text';
@@ -21,12 +27,20 @@ const displayTodos = (todos) => {
     todoText.className = 'todo-text';
 
     newTodoCont.appendChild(todoText);
+
+    const addIcon = document.createElement('i');
+    addIcon.classList.add('fas', 'fa-plus-square');
+    addIcon.classList.add('icons');
+    newTodoCont.appendChild(addIcon);
+
+
     return newTodoCont;
   };
 
   const todoItem = (todo) => {
     const todoLi = document.createElement('li');
     todoLi.setAttribute('todo', todo.index);
+    todoLi.classList.add('todoli')
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -38,6 +52,17 @@ const displayTodos = (todos) => {
 
     todoLi.appendChild(checkbox);
     todoLi.appendChild(todoDesc);
+
+    const delIcon = document.createElement('i');
+    delIcon.classList.add('fas', 'fa-trash-alt');
+    delIcon.classList.add('icons');
+    delIcon.setAttribute('id', 'trash-icon');
+    delIcon.addEventListener('click', () => {
+      ul.removeChild(li);
+
+    });
+
+  todoLi.appendChild(delIcon);
     return todoLi;
   };
 

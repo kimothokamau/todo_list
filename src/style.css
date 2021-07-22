@@ -39,3 +39,28 @@ input.todo-text:focus {
 .checkbox:checked {
   text-decoration: underline;
 }
+
+#today-cont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todoli {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+.icons {
+  color: lightgray;
+}
+
+#trash-icon {
+  margin-left: auto;
+}
+
+#newtodo {
+  display: flex;
+}
