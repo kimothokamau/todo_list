@@ -1,0 +1,85 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 7em auto;
+  padding: 0;
+  width: 50%;
+  border: 0.2px solid lightgray;
+}
+
+ul li {
+  list-style: none;
+  padding: 0.5em;
+  border-bottom: 0.2px solid lightgray;
+  font-size: 20px;
+}
+
+.checkbox {
+  height: 20px;
+  width: 20px;
+  margin-right: 1em;
+  background-color: #eee;
+}
+
+.todo-text {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-style: italic;
+}
+
+input.todo-text:focus {
+  outline-width: 0;
+}
+
+.checkbox:checked {
+  text-decoration: underline;
+}
+
+#today-cont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todoli {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.icons {
+  color: lightgray;
+}
+
+#trash-icon {
+  margin-left: auto;
+}
+
+#newtodo {
+  display: flex;
+}
+
+/* .drag-over {
+  background-color: teal;
+}
+
+.dragging {
+  background-color: lightpink;
+} */
+
+.hide {
+  display: none;
+}
+
+#clear {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
