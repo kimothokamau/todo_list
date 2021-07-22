@@ -1,6 +1,9 @@
-import {reOrder, dragStart, dragEnter, dragOver, dragLeave, dragEnd, drop} from './dragdrop.js';
+import {
+  reOrder, dragStart, dragOver, dragLeave, dragEnd, drop,
+} from './dragdrop.js';
 
-import {todos, todoslocal} from './backend.js';
+import { todos, todoslocal } from './backend.js';
+
 const displayTodos = (todos) => {
   const today = () => {
     const todayCont = document.createElement('li');
@@ -43,14 +46,14 @@ const displayTodos = (todos) => {
     const todoLi = document.createElement('li');
     todoLi.setAttribute('todo', todo.index);
     todoLi.classList.add('todoli');
+    todoLi.classList.add('draggable');
+    todoLi.draggable = true;
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    checkbox.classList.add('checkbox');
     checkbox.classList.add('completed');
     checkbox.name = 'completed';
-    // checkbox.addEventListener('click', () => todoComplete(parseInt(todoLi.getAttribute
-    //   ('task'), 10), checkbox.checked));
+    checkbox.addEventListener('click', () => updateTodos(activity, checkbox.checked));
 
     const todoDesc = document.createElement('span');
     todoDesc.classList.add('description');
@@ -78,12 +81,22 @@ const displayTodos = (todos) => {
     return todoLi;
   };
 
+  const clearCompleted = () => {
+    const li = document.createElement('li');
+
+    li.textContent = 'Clear all completed';
+    li.id = 'clear';
+
+    return li;
+  };
+
   const ul = document.querySelector('ul');
   ul.appendChild(today());
   ul.appendChild(addTodo());
 
   todos.sort((a, b) => ((a.index > b.index) ? 1 : -1));
   todos.forEach((todo) => ul.appendChild(todoItem(todo)));
+  ul.appendChild(clearCompleted());
 };
 
 export default displayTodos;

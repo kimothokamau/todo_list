@@ -1,3 +1,5 @@
+import {addTodos, todoslocal, emptyTodos} from './backend.js';
+
 const reOrder = () => {
   const draggable_elems = document.querySelectorAll('.draggable');
 
@@ -6,47 +8,51 @@ const reOrder = () => {
     draggable_elem.setAttribute('todo', i);
     i += 1;
   });
+};
 
-}
+const dragStart = (elem) => {
+  elem.classList.add('dragging');
+};
 
-const dragStart = (e) => {
-  e.dataTransfer.setData('text/plain', e.target.id);
-  setTimeout(() => {
-      e.target.classList.add('hide');
-  }, 0);
-
-}
-
-
-const dragEnter = (e) => {
+const dragOver = (elem, e) => {
   e.preventDefault();
-  e.classList.add('drag-over');
-}
+  elem.classList.add('drag-over');
+};
 
-const dragOver = (e) => {
-  e.preventDefault();
-  e.target.classList.add('drag-over');
-}
+const dragLeave = (elem) => {
+  elem.classList.remove('drag-over');
+};
 
-const dragLeave = (e) => {
-  e.target.classList.remove('drag-over');
-}
+const drop = (elem) => {
+  const dragging = document.querySelector('.dragging');
+  elem.before(dragging);
 
-const drop = (e) => {
-  e.target.classList.remove('drag-over');
+  const draggables = document.querySelectorAll('.draggable');
 
-  const id = e.dataTransfer.getData('text/plain');
-  const draggable = document.getElementById(id);
+  let i = 0;
+  draggables.forEach((draggable) => {
+    draggable.setAttribute('todo', i);
+    i += 1;
+  });
 
-  //Add it to the drop target
-  e.target.appendChild(draggable);
+  emptyTodos();
+  draggables.forEach((draggable) => {
+    const description = draggable.getElementsByClassName('description')[0].textContent;
+    const completed = draggable.getElementsByClassName('completed')[0].checked;
+    const index = draggable.getAttribute('todo');
 
-  // display the draggable element
-  draggable.classList.remove('hide');
-}
+    addTodos(description, completed, index);
+    todoslocal();
+  });
 
-const dragEnd = (e) => {
-  e.target.classList.remove('drag-over');
-}
 
-export { reOrder, dragStart, dragEnter, dragOver, dragLeave, drop, dragEnd };
+  elem.classList.remove('drag-over');
+};
+
+const dragEnd = (elem) => {
+  elem.classList.remove('dragging');
+};
+
+export {
+  reOrder, dragStart, dragOver, dragLeave, drop, dragEnd,
+};
