@@ -6,6 +6,12 @@ This is the second project in the Microverse's JavaScript module.
 ### Description
 "To DO List" is a simple HTML. CSS & Javascript application that enables a user to add, remove and re-order to-do lists.
 
+### Live Link
+
+[Live Link](https://kimothokamau.github.io/todo_list/)
+
+
+
 ### Learning objectives
 - Use webpack to bundle JavaScript.
 - Learn how to use proper ES6 syntax.
