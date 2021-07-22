@@ -11,7 +11,6 @@ This is the second project in the Microverse's JavaScript module.
 [Live Link](https://kimothokamau.github.io/todo_list/)
 
 
-
 ### Learning objectives
 - Use webpack to bundle JavaScript.
 - Learn how to use proper ES6 syntax.
