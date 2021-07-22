@@ -1,3 +1,6 @@
+import {reOrder, dragStart, dragEnter, dragOver, dragLeave, dragEnd, drop} from './dragdrop.js';
+
+import {todos, todoslocal} from './backend.js';
 const displayTodos = (todos) => {
   const today = () => {
     const todayCont = document.createElement('li');
@@ -44,6 +47,10 @@ const displayTodos = (todos) => {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('checkbox');
+    checkbox.classList.add('completed');
+    checkbox.name = 'completed';
+    // checkbox.addEventListener('click', () => todoComplete(parseInt(todoLi.getAttribute
+    //   ('task'), 10), checkbox.checked));
 
     const todoDesc = document.createElement('span');
     todoDesc.classList.add('description');
@@ -58,6 +65,16 @@ const displayTodos = (todos) => {
     delIcon.setAttribute('id', 'trash-icon');
 
     todoLi.appendChild(delIcon);
+
+    todoLi.addEventListener('dragstart', () => dragStart(todoLi));
+
+    todoLi.addEventListener('dragover', (e) => dragOver(todoLi, e));
+
+    todoLi.addEventListener('dragLeave', () => dragLeave(todoLi));
+
+    todoLi.addEventListener('drop', () => drop(todoLi));
+
+    todoLi.addEventListener('dragend', () => dragEnd(todoLi));
     return todoLi;
   };
 
