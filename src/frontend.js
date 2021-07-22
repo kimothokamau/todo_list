@@ -1,8 +1,6 @@
 import {
-  reOrder, dragStart, dragOver, dragLeave, dragEnd, drop,
+  dragStart, dragOver, dragLeave, dragEnd, drop,
 } from './dragdrop.js';
-
-import { todos, todoslocal } from './backend.js';
 
 const displayTodos = (todos) => {
   const today = () => {
@@ -53,7 +51,6 @@ const displayTodos = (todos) => {
     checkbox.type = 'checkbox';
     checkbox.classList.add('completed');
     checkbox.name = 'completed';
-    checkbox.addEventListener('click', () => updateTodos(activity, checkbox.checked));
 
     const todoDesc = document.createElement('span');
     todoDesc.classList.add('description');

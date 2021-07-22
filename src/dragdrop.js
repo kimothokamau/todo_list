@@ -1,11 +1,11 @@
-import {addTodos, todoslocal, emptyTodos} from './backend.js';
+import { addTodos, todoslocal, emptyTodos } from './backend.js';
 
 const reOrder = () => {
-  const draggable_elems = document.querySelectorAll('.draggable');
+  const draggableElems = document.querySelectorAll('.draggable');
 
   let i = 0;
-  draggable_elems.forEach((draggable_elem) => {
-    draggable_elem.setAttribute('todo', i);
+  draggableElems.forEach((draggableElem) => {
+    draggableElem.setAttribute('todo', i);
     i += 1;
   });
 };
@@ -44,7 +44,6 @@ const drop = (elem) => {
     addTodos(description, completed, index);
     todoslocal();
   });
-
 
   elem.classList.remove('drag-over');
 };
