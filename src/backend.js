@@ -1,24 +1,16 @@
 /* eslint-disable import/no-mutable-exports */
 
 let todos = [];
-// let todos = [
-//   { description: 'read es6 arrow functions', completed: false, index: 1 },
-//   { description: 'read on dom events', completed: false, index: 2 },
-//   { description: 'practice dom manipulation', completed: false, index: 3 },
-
-// ];
-
 const loadTodos = () => {
-  let fromLocal = JSON.parse(localStorage.getItem('tasks'));
+  let fromLocal = JSON.parse(localStorage.getItem('todos'));
 
   if (fromLocal == null) {
     fromLocal = [];
   }
-
   todos = fromLocal;
 
   return todos;
-}
+};
 
 const emptyTodos = () => {
   todos = [];
@@ -41,7 +33,7 @@ const removeTodos = (index, check) => {
   todoslocal();
 };
 
-const updateTodo = (index, description) => {
+const updateTodos = (index, description) => {
   const todoInTodos = todos.find((t) => t.index === index);
 
   todoInTodos.description = description;
@@ -49,9 +41,8 @@ const updateTodo = (index, description) => {
   todoslocal();
 };
 
-const createTodo = (description) => {
+const createTodos = (description) => {
   let index = 0;
-
   if (todos.length > 0) {
     index = todos[todos.length - 1].index + 1;
   }
@@ -61,7 +52,7 @@ const createTodo = (description) => {
 };
 
 export {
-  todos, todoslocal, addTodos, emptyTodos, removeTodos, updateTodo, createTodo
+  todos, loadTodos, todoslocal, addTodos, emptyTodos, removeTodos, updateTodos, createTodos,
 };
 
 /* eslint-enable import/no-mutable-exports */
