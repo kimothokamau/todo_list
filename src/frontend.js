@@ -5,7 +5,7 @@ import {
 } from './dragdrop.js';
 
 import {
-  createTodos, updateTodos, removeTodos, todoslocal,
+  createTodos, updateTodos, todoslocal,
 } from './backend.js';
 
 const displayTodos = (todos) => {

@@ -25,13 +25,6 @@ const addTodos = (description, completed, index) => {
   todos.push({ description, completed, index: parseInt(index, 10) });
 };
 
-const removeTodos = (index, check) => {
-  const todoInTodos = todos.find((t) => t.index === index);
-
-  todoInTodos.completed = check;
-
-  todoslocal();
-};
 
 const updateTodos = (index, description) => {
   const todoInTodos = todos.find((t) => t.index === index);
@@ -52,7 +45,7 @@ const createTodos = (description) => {
 };
 
 export {
-  todos, loadTodos, todoslocal, addTodos, emptyTodos, removeTodos, updateTodos, createTodos,
+  todos, loadTodos, todoslocal, addTodos, emptyTodos, updateTodos, createTodos,
 };
 
 /* eslint-enable import/no-mutable-exports */
