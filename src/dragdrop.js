@@ -8,6 +8,16 @@ const reOrder = () => {
     draggableElem.setAttribute('todo', i);
     i += 1;
   });
+
+  emptyTodos();
+  draggableElems.forEach((draggable) => {
+    const description = draggable.getElementsByClassName('description')[0].textContent;
+    const completed = draggable.getElementsByClassName('completed')[0].checked;
+    const index = draggable.getAttribute('todo');
+
+    addTodos(description, completed, index);
+    todoslocal();
+  });
 };
 
 const dragStart = (elem) => {
@@ -27,23 +37,7 @@ const drop = (elem) => {
   const dragging = document.querySelector('.dragging');
   elem.before(dragging);
 
-  const draggables = document.querySelectorAll('.draggable');
-
-  let i = 0;
-  draggables.forEach((draggable) => {
-    draggable.setAttribute('todo', i);
-    i += 1;
-  });
-
-  emptyTodos();
-  draggables.forEach((draggable) => {
-    const description = draggable.getElementsByClassName('description')[0].textContent;
-    const completed = draggable.getElementsByClassName('completed')[0].checked;
-    const index = draggable.getAttribute('todo');
-
-    addTodos(description, completed, index);
-    todoslocal();
-  });
+  reOrder();
 
   elem.classList.remove('drag-over');
 };
