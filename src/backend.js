@@ -25,7 +25,6 @@ const addTodos = (description, completed, index) => {
   todos.push({ description, completed, index: parseInt(index, 10) });
 };
 
-
 const updateTodos = (index, description) => {
   const todoInTodos = todos.find((t) => t.index === index);
 

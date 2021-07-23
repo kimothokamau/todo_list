@@ -68,12 +68,12 @@ const displayTodos = (todos) => {
     checkbox.name = 'completed';
     checkbox.addEventListener('change', () => {
       if (checkbox.checked) {
-        const index = todo.index;
+        const { index } = todo;
         todos[index].completed = true;
 
         todoslocal();
       } else {
-        const index = todo.index;
+        const { index } = todo;
         todos[index].completed = false;
         todoslocal();
       }
