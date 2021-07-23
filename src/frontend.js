@@ -5,7 +5,7 @@ import {
 } from './dragdrop.js';
 
 import {
-  createTodos, updateTodos, removeTodos,
+  createTodos, updateTodos, removeTodos, todoslocal,
 } from './backend.js';
 
 const displayTodos = (todos) => {
@@ -66,7 +66,18 @@ const displayTodos = (todos) => {
     checkbox.type = 'checkbox';
     checkbox.classList.add('completed');
     checkbox.name = 'completed';
-    checkbox.addEventListener('click', () => removeTodos(parseInt(todoLi.getAttribute('todo'), 10), checkbox.checked));
+    checkbox.addEventListener('click', () => {
+      if (checkbox.checked) {
+        const index = todo.index;
+        todos[index].completed = true;
+        todoslocal();
+      }
+      else {
+        const index = todo.index;
+        todos[index].completed = false;
+        todoslocal();
+      }
+    });
 
     const todoDesc = document.createElement('span');
     todoDesc.classList.add('description');
@@ -84,7 +95,6 @@ const displayTodos = (todos) => {
     delIcon.addEventListener('click', () => {
       ul.removeChild(todoLi);
       localStorage.clear();
-
       reOrder();
     });
 
@@ -106,6 +116,20 @@ const displayTodos = (todos) => {
 
     li.textContent = 'Clear all completed';
     li.id = 'clear';
+    li.addEventListener('click', () => {
+      const draggables = [...document.querySelectorAll('.draggable')];
+
+      const newList = draggables.filter((draggable) => draggable.getElementsByClassName('completed')[0].checked === false);
+
+      draggables.forEach((draggable) => ul.removeChild(draggable));
+
+      newList.forEach((item) => ul.appendChild(item));
+
+      reOrder();
+
+      const clear = document.getElementById('clear');
+      ul.appendChild(clear);
+    });
 
     return li;
   };
