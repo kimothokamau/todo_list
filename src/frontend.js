@@ -66,13 +66,13 @@ const displayTodos = (todos) => {
     checkbox.type = 'checkbox';
     checkbox.classList.add('completed');
     checkbox.name = 'completed';
-    checkbox.addEventListener('click', () => {
+    checkbox.addEventListener('change', () => {
       if (checkbox.checked) {
         const index = todo.index;
         todos[index].completed = true;
+
         todoslocal();
-      }
-      else {
+      } else {
         const index = todo.index;
         todos[index].completed = false;
         todoslocal();
