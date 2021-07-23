@@ -30,7 +30,7 @@ const displayTodos = (todos) => {
   const addTodo = () => {
     const newTodoCont = document.createElement('li');
     newTodoCont.id = 'newTodoCont';
-    newTodoCont.setAttribute('id', 'newtodo');
+    // newTodoCont.setAttribute('id', 'newtodo');
   
     const todoText = document.createElement('input');
     todoText.type = 'text';
@@ -81,6 +81,7 @@ const displayTodos = (todos) => {
     delIcon.setAttribute('id', 'trash-icon');
     delIcon.addEventListener('click', () => {
       ul.removeChild(todoLi);
+      localStorage.clear();
 
       reOrder();
     });
@@ -112,6 +113,7 @@ const displayTodos = (todos) => {
 
   todos.sort((a, b) => ((a.index > b.index) ? 1 : -1));
   todos.forEach((todo) => ul.appendChild(todoItem(todo)));
+
   ul.appendChild(clearCompleted());
 };
 

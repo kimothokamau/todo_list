@@ -16,7 +16,7 @@ const emptyTodos = () => {
   todos = [];
 };
 
-const todoslocal = (todos) => {
+const todoslocal = () => {
   const todosJson = JSON.stringify(todos);
   localStorage.setItem('todos', todosJson);
 };
