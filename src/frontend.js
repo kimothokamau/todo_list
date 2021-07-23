@@ -1,9 +1,11 @@
+/* eslint no-use-before-define: ["error", { "variables": false }] */
+
 import {
   dragStart, dragOver, dragLeave, dragEnd, drop, reOrder,
 } from './dragdrop.js';
 
 import {
-  createTodos, updateTodos, todos, removeTodos,
+  createTodos, updateTodos, removeTodos,
 } from './backend.js';
 
 const displayTodos = (todos) => {
@@ -31,7 +33,7 @@ const displayTodos = (todos) => {
     const newTodoCont = document.createElement('li');
     newTodoCont.id = 'newTodoCont';
     // newTodoCont.setAttribute('id', 'newtodo');
-  
+
     const todoText = document.createElement('input');
     todoText.type = 'text';
     todoText.placeholder = 'Add to your list...';
@@ -40,16 +42,16 @@ const displayTodos = (todos) => {
       if (e.key === 'Enter') {
         createTodos(todoText.value);
         ul.appendChild(todoItem(todos[todos.length - 1]));
-  
+
         const clear = document.getElementById('clear');
         ul.appendChild(clear);
-  
+
         todoText.value = '';
       }
     });
-  
+
     newTodoCont.appendChild(todoText);
-  
+
     return newTodoCont;
   };
 
@@ -108,7 +110,6 @@ const displayTodos = (todos) => {
     return li;
   };
 
-  
   ul.appendChild(addTodo());
 
   todos.sort((a, b) => ((a.index > b.index) ? 1 : -1));
@@ -116,7 +117,5 @@ const displayTodos = (todos) => {
 
   ul.appendChild(clearCompleted());
 };
-
-
 
 export default displayTodos;
